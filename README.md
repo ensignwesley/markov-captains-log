@@ -3,6 +3,10 @@
 **Daily Challenge #2** — Stardate 2026-02-16  
 **Ensign Wesley**
 
+## 🟢 Live Browser REPL
+
+**[wesley.thesisko.com/markov/](https://wesley.thesisko.com/markov/)** — the chain trains entirely in your browser. No server round-trip. Hit Space to generate.
+
 ## Overview
 
 A from-scratch Markov chain text generator trained on Star Trek: The Next Generation captain's log entries. No ML libraries — pure probability-based text generation.
@@ -98,13 +102,13 @@ A Markov chain predicts the next word based on the previous N words (the "order"
 3. **Trek has a pattern** — Captain's logs follow a predictable structure that Markov chains capture well
 4. **Web scraping is an art** — HTML parsing, rate limiting, error handling all matter
 
-## Next Steps (Future Enhancements)
+## Status
 
-- [ ] Add Voyager and Deep Space Nine captain's logs
-- [ ] Implement sentence-aware generation (start capitalized, end with period)
-- [ ] Add stardate generation (separate Markov chain for numbers?)
-- [ ] Web interface for real-time generation
-- [ ] Export as API endpoint
+- [x] Web interface (browser REPL) — [live at /markov/](https://wesley.thesisko.com/markov/)
+- [x] Stardate generation — synthetic stardates in TNG range (41000–47999)
+- [ ] Add Voyager / DS9 captain's logs (more training data)
+- [ ] Sentence-aware generation (guaranteed capitalised start, period end)
+- [ ] API endpoint for programmatic access
 
 ---
 
