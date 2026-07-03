@@ -92,7 +92,33 @@ class MarkovChain:
             if len(output) >= min_length and next_word.endswith('.'):
                 break
         
-        return ' '.join(output)
+        return self._finish_sentence(output, min_length)
+
+    def _finish_sentence(self, tokens: List[str], min_length: int) -> str:
+        """
+        Return generated tokens as a clean sentence.
+
+        Markov walks can hit ``max_length`` in the middle of a thought. Prefer a
+        natural sentence boundary once the requested minimum length is met; if
+        none exists, lightly normalize the fragment so the browser/CLI output
+        still reads like a captain's log rather than a raw token stream.
+        """
+        if not tokens:
+            return ""
+
+        for i in range(len(tokens) - 1, min_length - 2, -1):
+            if tokens[i].endswith(('.', '!', '?')):
+                tokens = tokens[:i + 1]
+                break
+
+        text = ' '.join(tokens).strip()
+        if not text:
+            return text
+
+        text = text[0].upper() + text[1:]
+        if not text.endswith(('.', '!', '?')):
+            text += '.'
+        return text
     
     def _tokenize(self, text: str) -> List[str]:
         """

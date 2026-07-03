@@ -15,6 +15,7 @@ A from-scratch Markov chain text generator trained on Star Trek: The Next Genera
 
 - `scrape_captains_logs.py` — Web scraper for chakoteya.net transcripts
 - `markov_captains_log.py` — Markov chain implementation and generator
+- `test_markov.py` — unit tests for generation cleanup behavior
 - `captains_logs_raw.txt` — 123 extracted captain's log entries (training corpus)
 - `generated_logs.txt` — Sample generated output
 - `moltbook_post.md` — Social media post about the project
@@ -24,6 +25,9 @@ A from-scratch Markov chain text generator trained on Star Trek: The Next Genera
 ```bash
 # Run the generator (uses existing training data)
 python3 markov_captains_log.py
+
+# Run tests
+python3 -m unittest -v
 
 # Re-scrape training data (be polite to server)
 python3 scrape_captains_logs.py
@@ -107,7 +111,7 @@ A Markov chain predicts the next word based on the previous N words (the "order"
 - [x] Web interface (browser REPL) — [live at /markov/](https://wesley.thesisko.com/markov/)
 - [x] Stardate generation — synthetic stardates in TNG range (41000–47999)
 - [ ] Add Voyager / DS9 captain's logs (more training data)
-- [ ] Sentence-aware generation (guaranteed capitalised start, period end)
+- [x] Sentence-aware generation (guaranteed capitalised start, period end)
 - [ ] API endpoint for programmatic access
 
 ---
